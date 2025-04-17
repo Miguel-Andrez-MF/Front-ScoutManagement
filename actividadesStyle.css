@@ -923,6 +923,64 @@ perfil-menu li:hover span {
     z-index: auto;
 }
 
+/* Estilos para el botón de Crear Actividad */
+.create-activity-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #444444;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    height: 40px;
+    margin-left: 16px;
+}
+
+.create-activity-btn:hover {
+    background-color: #333333;
+}
+
+.create-activity-btn:active {
+    background-color: #222222;
+}
+
+.create-activity-btn .calendar-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Nuevo contenedor para las pestañas y el botón */
+.left-section {
+    display: flex;
+    align-items: center;
+}
+
+/* Ajuste para el contenedor de la fila del encabezado */
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Asegurarse de que las pestañas estén alineadas correctamente */
+.tab-container {
+    display: flex;
+}
+
+/* Ajuste para el contenedor de búsqueda para acomodar el nuevo botón */
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
 .activity-card {
     transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -930,7 +988,6 @@ perfil-menu li:hover span {
 
 .activity-card:hover {
     box-shadow: 0 12px 30px rgba(41, 18, 85, 0.15); /* Sombra con el color morado que usas */
-    transform: translateY(-1px); /* Sutil elevación */
 }
 
 .date-column {
