@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actividades</title>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="modalAsistencia.css">
     <link rel="stylesheet" href="actividadesStyle.css">
 </head>
 <body>
@@ -330,7 +331,134 @@
             </div>
         </div>
 
-        
+                    <!-- Modal de Asistencia -->
+            <div id="modal-asistencia" class="modal">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Asistencia</h2>
+                    <p>Aquí puedes registrar o modificar la asistencia de los participantes para la actividad seleccionada.</p>
+                </div>
+                <div class="table-container">
+                    <table class="participants-table">
+                    <thead>
+                        <tr>
+                        <th style="padding-left: 78px;">Nombre</th>
+                        <th>Asistio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td class="participant-cell">
+                            <div class="participant-avatar">
+                            <img src="./img/miembro.svg" alt="Avatar">
+                            </div>
+                            <div class="participant-info">
+                            <div class="participant-name">Miguel Andres Marin Fernandez</div>
+                            <div class="participant-badge">LOBATO</div>
+                            </div>
+                        </td>
+                        <td class="action-cell">
+                            <div class="checkbox-container">
+                            <input type="checkbox" id="check-1" class="attendance-checkbox" checked>
+                            <label for="check-1"></label>
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td class="participant-cell">
+                            <div class="participant-avatar">
+                            <img src="./img/miembro.svg" alt="Avatar">
+                            </div>
+                            <div class="participant-info">
+                            <div class="participant-name">Jhovani Vazquez Sanchez</div>
+                            <div class="participant-badge">LOBATO</div>
+                            </div>
+                        </td>
+                        <td class="action-cell">
+                            <div class="checkbox-container">
+                            <input type="checkbox" id="check-2" class="attendance-checkbox">
+                            <label for="check-2"></label>
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td class="participant-cell">
+                            <div class="participant-avatar">
+                            <img src="./img/miembro.svg" alt="Avatar">
+                            </div>
+                            <div class="participant-info">
+                            <div class="participant-name">Carlos Javier Torres Ramirez</div>
+                            <div class="participant-badge">LOBATO</div>
+                            </div>
+                        </td>
+                        <td class="action-cell">
+                            <div class="checkbox-container">
+                            <input type="checkbox" id="check-3" class="attendance-checkbox">
+                            <label for="check-3"></label>
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td class="participant-cell">
+                            <div class="participant-avatar">
+                            <img src="./img/miembro.svg" alt="Avatar">
+                            </div>
+                            <div class="participant-info">
+                            <div class="participant-name">Isabela Gómez Ruiz</div>
+                            <div class="participant-badge">LOBATO</div>
+                            </div>
+                        </td>
+                        <td class="action-cell">
+                            <div class="checkbox-container">
+                            <input type="checkbox" id="check-4" class="attendance-checkbox">
+                            <label for="check-4"></label>
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td class="participant-cell">
+                            <div class="participant-avatar">
+                            <img src="./img/miembro.svg" alt="Avatar">
+                            </div>
+                            <div class="participant-info">
+                            <div class="participant-name">Jhovani Vazquez Sanchez</div>
+                            <div class="participant-badge">LOBATO</div>
+                            </div>
+                        </td>
+                        <td class="action-cell">
+                            <div class="checkbox-container">
+                            <input type="checkbox" id="check-5" class="attendance-checkbox">
+                            <label for="check-5"></label>
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td class="participant-cell">
+                            <div class="participant-avatar">
+                            <img src="./img/miembro.svg" alt="Avatar">
+                            </div>
+                            <div class="participant-info">
+                            <div class="participant-name">Carlos Javier Torres Ramirez</div>
+                            <div class="participant-badge">LOBATO</div>
+                            </div>
+                        </td>
+                        <td class="action-cell">
+                            <div class="checkbox-container">
+                            <input type="checkbox" id="check-6" class="attendance-checkbox">
+                            <label for="check-6"></label>
+                            </div>
+                        </td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-button cancel-button">Cancelar</button>
+                    <button class="modal-button save-button">Guardar</button>
+                </div>
+                </div>
+                <div class="modal-overlay"></div>
+            </div>
 
         </div>
 
@@ -389,10 +517,10 @@
     
     <!-- JavaScript para la funcionalidad -->
     <script>
-                  const tabs = document.querySelectorAll(".tab");
+    const tabs = document.querySelectorAll(".tab");
 
-tabs.forEach(tab => {
-  tab.addEventListener("click", () => {
+    tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
     // Remover clase activa de todas
     tabs.forEach(t => t.classList.remove("active"));
     // Activar la que se clickeó
@@ -407,6 +535,76 @@ tabs.forEach(tab => {
     // document.querySelector('#contenido-finalizadas').style.display = selectedTab === 'finalizadas' ? 'block' : 'none';
   });
 });
+         
+
+        // Función para mostrar el modal
+function showModal() {
+  document.getElementById('modal-asistencia').style.display = 'block';
+  document.body.style.overflow = 'hidden'; // Evita el scroll del body
+}
+
+// Función para ocultar el modal
+function hideModal() {
+  document.getElementById('modal-asistencia').style.display = 'none';
+  document.body.style.overflow = 'auto'; // Restaura el scroll del body
+}
+
+// Agregar event listeners a los elementos necesarios
+document.addEventListener('DOMContentLoaded', function() {
+  // Seleccionar todos los botones de dropdown que contienen "Asistencia"
+  const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+  
+  dropdownMenus.forEach(menu => {
+    const asistenciaItem = menu.querySelector('.dropdown-item:nth-child(1)');
+    if (asistenciaItem) {
+      asistenciaItem.addEventListener('click', function(e) {
+        e.stopPropagation(); // Evita que el click se propague
+        showModal();
+        
+        // Cerrar el dropdown al abrir el modal
+        const activeDropdowns = document.querySelectorAll('.dropdown-menu.active');
+        activeDropdowns.forEach(dropdown => {
+          dropdown.classList.remove('active');
+        });
+        
+        const activeButtons = document.querySelectorAll('.expand-btn.active');
+        activeButtons.forEach(button => {
+          button.classList.remove('active');
+        });
+      });
+    }
+  });
+  
+            // Cerrar modal con botón de Cancelar
+            const cancelButton = document.querySelector('.cancel-button');
+            if (cancelButton) {
+                cancelButton.addEventListener('click', hideModal);
+            }
+            
+            // Cerrar modal con botón de Guardar (en un caso real, aquí guardarías la información primero)
+            const saveButton = document.querySelector('.save-button');
+            if (saveButton) {
+                saveButton.addEventListener('click', hideModal);
+            }
+            
+            // Cerrar modal al hacer clic en el overlay
+            const modalOverlay = document.querySelector('.modal-overlay');
+            if (modalOverlay) {
+                modalOverlay.addEventListener('click', hideModal);
+            }
+            
+            // Evitar que al hacer clic en el contenido del modal, este se cierre
+            const modalContent = document.querySelector('.modal-content');
+            if (modalContent) {
+                modalContent.addEventListener('click', function(e) {
+                e.stopPropagation();
+                });
+            }
+            });
+
+           
+
+                
 
                 document.addEventListener('DOMContentLoaded', function() {
                 const realDateInput = document.getElementById('real-date');
