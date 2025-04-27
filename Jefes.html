@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionar Jefes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="jefesStyle.css">
+</head>
+<body>
+    <!-- Botón hamburguesa para móviles -->
+    <button class="sidebar-toggle" id="sidebarToggle">
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </button>
+    
+    <!-- Overlay para fondos oscuros al abrir sidebar en móvil -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="logo-contenedor">
+            <img src="img/logoApli.svg" alt="Scout Management" class="logo">
+        </div>
+
+        <div class="perfil-contenedor">
+            <img src="img/perfil.svg" alt="Perfil" class="perfil">
+            <div class="perfil-info">
+                <p class="nombre-perfil">Miguel Andres M...</p>
+                <p class="cargo-perfil">Adulto - Jefe Manada</p>
+            </div>
+            <div class="perfil-flecha">
+                <img src="img/flechita.svg" alt="Desplegar">
+            </div>
+
+            <!-- Menú desplegable del perfil -->
+            <div class="perfil-menu" id="perfilMenu">
+                <ul>
+                    <li class="nav-link">
+                        <img src="img/sesion.svg" alt="Ver Perfil" class="perfil-menu-icon">
+                        <span>Ver Perfil</span>
+                    </li>
+                    <li class="nav-link">
+                        <img src="img/cierreSesion.svg" alt="Cerrar Sesión" class="perfil-menu-icon">
+                        <span>Cerrar Sesión</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+       
+        <div class="linea-divisoria"></div>
+
+        <div class="contenido-central">
+            <nav class="menu">
+                <ul>
+                    <li class="menu-item">
+                        <div class="main-button nav-link">
+                            <img src="img/Casa.svg" alt="Inicio">
+                            <span>Inicio</span>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="main-button">
+                            <img src="img/Calendario.svg" alt="Actividades">
+                            <span>Actividades</span>
+                            <img src="img/flechita.svg" alt="Flecha" class="arrow-img" style="width: 15px; height: 15px;">
+                        </div>
+                        <ul class="submenu">
+                            <li class="nav-link"><img src="img/calendario(consulta).svg" alt="Consultar" class="submenu-icon">Consultar Actividades</li>
+                            <li class="nav-link"><img src="img/calendario(agregar).svg" alt="Agregar" class="submenu-icon">Crear Actividad</li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="main-button">
+                            <img src="img/grafico.svg" alt="Progresiones">
+                            <span>Progresiones</span>
+                            <img src="img/flechita.svg" alt="Flecha" class="arrow-img" style="width: 15px; height: 15px;">
+                        </div>
+                        <ul class="submenu">
+                            <li class="nav-link"><img src="img/retos.svg" alt="Consultar" class="submenu-icon">Gestionar Retos</li>
+                            <li class="nav-link"><img src="img/retos(miembros).svg" alt="Agregar" class="submenu-icon">Progresion Miembros</li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="main-button">
+                            <img src="img/usuarios.svg" alt="Miembros">
+                            <span>Miembros</span>
+                            <img src="img/flechita.svg" alt="Flecha" class="arrow-img" style="width: 15px; height: 15px;">
+                        </div>
+                        <ul class="submenu">
+                            <li class="nav-link"><img src="img/usuario(buscar).svg" alt="Consultar" class="submenu-icon">Consultar Miembros</li>
+                            <li class="nav-link"><img src="img/usuario(consulJefe).svg" alt="Agregar" class="submenu-icon">Consultar Jefes</li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+       
+        <div class="linea-divisoria"></div>
+
+        <div class="configuracion nav-link">
+            <img src="img/tuerca.svg" alt="Configuración">
+            <span>Configuración de Cuenta</span>
+        </div>        
+    </div>
+
+    
+    <!-- Contenido principal -->
+    <main>
+        <!-- Aquí va el contenido de la página -->
+
+        <div class="container">
+            
+            <div class="header">
+                <h1 class="encabezado">Jefes Registrados</h1>
+                <p class="description">Desde aquí puedes consultar, modificar y gestionar el estado de los jefes del grupo.</p>
+            </div>
+            
+    
+            
+            
+            <div class="divider-line"></div>
+            
+            <div class="activities-container">
+                <div class="header-row">
+                    <div class="left-section">
+                        <div class="tab-container">
+                            <button class="tab active" data-tab="proximas">Activos</button>
+                            <button class="tab" data-tab="finalizadas">Inactivos</button>
+                        </div>
+                        
+                       
+                        <button class="create-miembro-btn">
+                            <span>Agregar Usuario</span>
+                            <img src="./img/plus.svg" alt="Arrow" width="16" height="16">
+                        </button>
+                    </div>
+                    
+                    <div class="search-container" style="margin-right: 55px;">
+                        <input type="text" class="filter-search" placeholder="Ingrese el número de identificación...">
+                        <button class="search-btn">
+                            <div class="icon-placeholder search-icon">
+                                <img src="./img/lupa.svg" alt="Search" width="16" height="16">
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+
+            
+            <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="nombre-col">Nombre</th>
+                        <th class="docu-col" >Documento</th>
+                        <th class="rama-col">Rama</th>
+                        <th class="nomCont-col" >Correo</th>
+                        <th>Teléfono Contacto</th>
+                        <th class="acc-col">Accion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Registro 1 -->
+                    <tr>
+                        <td>
+                            <div class="user-container">
+                                <img src="./img/miembro.svg" alt="Profile" class="profile-img">
+                                Miguel Andres Marín Fernandez
+                            </div>
+                        </td>
+                        <td>CC.1112041395</td>
+                        <td><span class="rama-badge rover">ROVER</span></td>
+                        <td class="nomCont-col">jefaso@gmail.com</td>
+                        <td>316-358-7463</td>
+                        <td>
+                            <div class="dropdown-container">
+                                <button class="expand-btn">
+                                    <div class="dots-container">
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                    </div>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <div class="dropdown-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="dropdown-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M15 8C15 9.85652 14.2625 11.637 12.9497 12.9497C11.637 14.2625 9.85652 15 8 15C6.14348 15 4.36301 14.2625 3.05025 12.9497C1.7375 11.637 1 9.85652 1 8C1 6.14348 1.7375 4.36301 3.05025 3.05025C4.36301 1.7375 6.14348 1 8 1C9.85652 1 11.637 1.7375 12.9497 3.05025C14.2625 4.36301 15 6.14348 15 8ZM10 6C10 6.53043 9.78929 7.03914 9.41421 7.41421C9.03914 7.78929 8.53043 8 8 8C7.46957 8 6.96086 7.78929 6.58579 7.41421C6.21071 7.03914 6 6.53043 6 6C6 5.46957 6.21071 4.96086 6.58579 4.58579C6.96086 4.21071 7.46957 4 8 4C8.53043 4 9.03914 4.21071 9.41421 4.58579C9.78929 4.96086 10 5.46957 10 6ZM8 9C6.175 9 4.578 9.977 3.705 11.437C4.21992 12.0814 4.87345 12.6016 5.61703 12.9587C6.3606 13.3159 7.1751 13.5009 8 13.5C8.82473 13.5007 9.63904 13.3157 10.3824 12.9585C11.1258 12.6014 11.7792 12.0813 12.294 11.437C11.8506 10.6937 11.2217 10.0783 10.469 9.65112C9.71628 9.22392 8.8655 8.99956 8 9Z" fill="#919191"/>
+                                          </svg>
+                                        <span>Ver Perfil</span>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="dropdown-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M13.488 2.51311C13.3255 2.35059 13.1326 2.22167 12.9202 2.13372C12.7079 2.04576 12.4803 2.00049 12.2505 2.00049C12.0207 2.00049 11.7931 2.04576 11.5807 2.13372C11.3684 2.22167 11.1755 2.35059 11.013 2.51311L6.74999 6.77411C6.49469 7.02944 6.29217 7.33254 6.15399 7.66611L5.30599 9.71311C5.24918 9.85017 5.23431 10.001 5.26324 10.1465C5.29217 10.292 5.3636 10.4257 5.46851 10.5306C5.57342 10.6355 5.70708 10.7069 5.85259 10.7359C5.99811 10.7648 6.14893 10.7499 6.28599 10.6931L8.33299 9.84511C8.66656 9.70693 8.96966 9.50441 9.22499 9.24911L13.486 4.98711C13.8139 4.65896 13.9981 4.21403 13.9981 3.75011C13.9981 3.2862 13.8139 2.84127 13.486 2.51311H13.488Z" fill="#919191"/>
+                                            <path d="M4.75 3.5C4.06 3.5 3.5 4.06 3.5 4.75V11.25C3.5 11.94 4.06 12.5 4.75 12.5H11.25C11.94 12.5 12.5 11.94 12.5 11.25V9C12.5 8.80109 12.579 8.61032 12.7197 8.46967C12.8603 8.32902 13.0511 8.25 13.25 8.25C13.4489 8.25 13.6397 8.32902 13.7803 8.46967C13.921 8.61032 14 8.80109 14 9V11.25C14 11.9793 13.7103 12.6788 13.1945 13.1945C12.6788 13.7103 11.9793 14 11.25 14H4.75C4.02065 14 3.32118 13.7103 2.80546 13.1945C2.28973 12.6788 2 11.9793 2 11.25V4.75C2 4.02065 2.28973 3.32118 2.80546 2.80546C3.32118 2.28973 4.02065 2 4.75 2H7C7.19891 2 7.38968 2.07902 7.53033 2.21967C7.67098 2.36032 7.75 2.55109 7.75 2.75C7.75 2.94891 7.67098 3.13968 7.53033 3.28033C7.38968 3.42098 7.19891 3.5 7 3.5H4.75Z" fill="#919191"/>
+                                          </svg>
+                                        <span>Modificar</span>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        
+                                        <!-- Icono para Habilitar -->
+                                        <!-- <svg xmlns="http://www.w3.org/2000/svg" class="dropdown-icon" width="14" height="14" viewBox="0 0 13 13" fill="none">
+                                            <g clip-path="url(#clip0_69_717)">
+                                              <path d="M11.9167 6.49992C11.9167 3.50837 9.49156 1.08325 6.50004 1.08325C3.5085 1.08325 1.08337 3.50837 1.08337 6.49992C1.08337 9.49144 3.5085 11.9166 6.50004 11.9166C9.49156 11.9166 11.9167 9.49144 11.9167 6.49992Z" stroke="#909090" stroke-width="1.3"/>
+                                              <path d="M4.33337 6.77083L5.68754 8.125L8.66671 4.875" stroke="#909090" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </g>
+                                            <defs>
+                                              <clipPath id="clip0_69_717">
+                                                <rect width="13" height="13" fill="white"/>
+                                              </clipPath>
+                                            </defs>
+                                          </svg>-->
+
+                                        <!-- Icono para Deshabilitar -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="dropdown-icon" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                                            <g clip-path="url(#clip0_69_607)">
+                                              <path d="M2.84375 2.70825L10.4271 10.2916" stroke="#909090" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                              <path d="M12.0521 6.49992C12.0521 3.50838 9.62693 1.08325 6.63542 1.08325C3.64387 1.08325 1.21875 3.50838 1.21875 6.49992C1.21875 9.49144 3.64387 11.9166 6.63542 11.9166C9.62693 11.9166 12.0521 9.49144 12.0521 6.49992Z" stroke="#909090" stroke-width="1.5"/>
+                                            </g>
+                                            <defs>
+                                              <clipPath id="clip0_69_607">
+                                                <rect width="13" height="13" fill="white"/>
+                                              </clipPath>
+                                            </defs>
+                                          </svg>
+                                        <span>Deshabilitar</span>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Registro 2 -->
+                    <tr>
+                        <td>
+                            <div class="user-container">
+                                <img src="./img/miembro.svg" alt="Profile" class="profile-img">
+                                Jhovani Vazquez  Sanchez
+                            </div>
+                        </td>
+                        <td>TI.1112786395</td>
+                        <td><span class="rama-badge caminante">CAMINANTE</span></td>
+                        <td class="nomCont-col">jefaso@gmail.com</td>
+                        <td>310-889-7654</td>
+                        <td>
+                            <div class="dropdown-container">
+                                <button class="expand-btn">
+                                    <div class="dots-container">
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                    </div>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <div class="dropdown-item">
+                                        <img src="./img/modify.svg" alt="Modificar" class="dropdown-icon">
+                                        <span>Modificar</span>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <img src="./img/trash.svg" alt="Eliminar" class="dropdown-icon">
+                                        <span>Eliminar</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Registro 3 -->
+                    <tr>
+                        <td>
+                            <div class="user-container">
+                                <img src="./img/miembro.svg" alt="Profile" class="profile-img">
+                                Valentina López Sánchez
+                            </div>
+                        </td>
+                        <td>TI.1112897395</td>
+                        <td><span class="rama-badge caminante">CAMINANTE</span></td>
+                        <td class="nomCont-col">jefaso@gmail.com</td>
+                        <td>312-765-8890</td>
+                        <td>
+                            <div class="dropdown-container">
+                                <button class="expand-btn">
+                                    <div class="dots-container">
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                    </div>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <div class="dropdown-item">
+                                        <img src="./img/modify.svg" alt="Modificar" class="dropdown-icon">
+                                        <span>Modificar</span>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <img src="./img/trash.svg" alt="Eliminar" class="dropdown-icon">
+                                        <span>Eliminar</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Registro 4 -->
+                    <tr>
+                        <td>
+                            <div class="user-container">
+                                <img src="./img/miembro.svg" alt="Profile" class="profile-img">
+                                Carlos Javier Torres Ramírez
+                            </div>
+                        </td>
+                        <td>TI.1112045475</td>
+                        <td><span class="rama-badge lobato">LOBATO</span></td>
+                        <td class="nomCont-col">jefaso@gmail.com</td>
+                        <td>311-445-2289</td>
+                        <td>
+                            <div class="dropdown-container">
+                                <button class="expand-btn">
+                                    <div class="dots-container">
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                    </div>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <div class="dropdown-item">
+                                        <img src="./img/modify.svg" alt="Modificar" class="dropdown-icon">
+                                        <span>Modificar</span>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <img src="./img/trash.svg" alt="Eliminar" class="dropdown-icon">
+                                        <span>Eliminar</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Registro 5 -->
+                    <tr>
+                        <td>
+                            <div class="user-container">
+                                <img src="./img/miembro.svg" alt="Profile" class="profile-img">
+                                Isabella Gómez Ruiz
+                            </div>
+                        </td>
+                        <td>TI.1112979635</td>
+                        <td><span class="rama-badge scout">SCOUT</span></td>
+                        <td class="nomCont-col">jefaso@gmail.com</td>
+                        <td>316-358-7463</td>
+                        <td>
+                            <div class="dropdown-container">
+                                <button class="expand-btn">
+                                    <div class="dots-container">
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                        <div class="dot"></div>
+                                    </div>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <div class="dropdown-item">
+                                        <img src="./img/modify.svg" alt="Modificar" class="dropdown-icon">
+                                        <span>Modificar</span>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <img src="./img/trash.svg" alt="Eliminar" class="dropdown-icon">
+                                        <span>Eliminar</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+            <!-- Modal de Ver Perfil -->
+            <div id="modal-verPerfil" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+            
+                    <div class="profile-header">
+                        <img src="./img/miembro.svg" alt="Eliminar" class="profile-image">
+                        <div class="profile-info">
+                            <h1 class="name-profile">Miguel Andres Marin Fernandez</h1>
+                            <p class="email-profile">miguelito@gmail.com</p>
+                            <p class="state-profile">Activo</p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="section">
+                    <div class="info-grid1">
+                        <div class="info-item">
+                            <p class="info-label">Fecha Nacimiento</p>
+                            <p class="info-value">11-12-2005</p>
+                        </div>
+                        <div class="info-item">
+                            <p class="info-label">Documento</p>
+                            <p class="info-value">CC.1112041392</p>
+                        </div>
+                        <div class="info-item">
+                            <p class="info-label">Rama</p>
+                            <p class="info-value">MANADA</p>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="divider"></div>
+                    
+                    <div class="section">
+                        <h2 class="section-title">Datos de Contacto</h2>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <p class="info-label">Dirección Residencia</p>
+                                <p class="info-value">Carrera 9 #36-12, Barrio San Fernando, Cali</p>
+                            </div>
+                            
+                            <div class="info-item">
+                                <p class="info-label">Teléfono</p>
+                                <p class="info-value">316-358-7463</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="divider"></div>
+
+             
+                    <div class="modal-footer">
+                        <button class="modal-button cancel-button">Cerrar</button>
+                    </div>
+                  </div>
+                <div class="modal-overlay"></div>
+            </div>
+
+        </div>
+     
+
+
+
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-top">
+                    <div class="footer-logo">
+                        <img src="img/logo605.png" alt="Scouts Jaguares 605" class="logo-img">
+                    </div>
+                    
+                    <div class="footer-info">
+                        <div class="footer-title">
+                            <div class="dot"></div>
+                            <h2>Scouts Jaguares 605</h2>
+                        </div>
+                        <p class="footer-slogan">Listos para servir, listos para rugir.</p>
+                        
+                        <div class="footer-address">
+                            <img src="img/ubicacion.svg" alt="Ubicación" class="ubicacion-icon">
+                            <p class="footer-ubi">Palmira, Valle del Cauca – Barrio Las Delicias<br>
+                            Sede: Casa de la Juventud, Calle 30 #29-15</p>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-social">
+                        <a href="#" class="social-icon">
+                            <img src="img/facebook.svg" alt="Facebook">
+                        </a>
+                        <a href="#" class="social-icon">
+                            <img src="img/instagram.svg" alt="Instagram">
+                        </a>
+                        <a href="#" class="social-icon">
+                            <img src="img/tiktok.svg" alt="TikTok">
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <nav class="footer-nav">
+                        <a href="#" class="footer-link">Inicio</a>
+                        <a href="#" class="footer-link">Política de Tratamiento de Datos</a>
+                        <a href="#" class="footer-link">Configuración</a>
+                    </nav>
+                    <p class="footer-copyright">© 2025 Todos los derechos reservados</p>
+                </div>
+            </div>
+        </footer>
+
+
+    </main>
+
+    <script>
+
+        
+            const tabs = document.querySelectorAll(".tab");
+
+            tabs.forEach(tab => {
+            tab.addEventListener("click", () => {
+            // Remover clase activa de todas
+            tabs.forEach(t => t.classList.remove("active"));
+            // Activar la que se clickeó
+            tab.classList.add("active");
+
+            // Aquí puedes controlar qué contenido mostrar según la pestaña
+            const selectedTab = tab.dataset.tab;
+            console.log("Seleccionaste:", selectedTab);
+
+            // Por ejemplo:
+            // document.querySelector('#contenido-proximas').style.display = selectedTab === 'proximas' ? 'block' : 'none';
+            // document.querySelector('#contenido-finalizadas').style.display = selectedTab === 'finalizadas' ? 'block' : 'none';
+            });
+            });
+
+            // Funciones para los modales
+            document.addEventListener('DOMContentLoaded', function() {
+                // --- FUNCIONES PARA MANIPULAR MODALES ---
+                
+                document.getElementById('modal-verPerfil').style.display = 'none';
+
+                // Función para mostrar el modal
+                function showModal() {
+                    document.getElementById('modal-verPerfil').style.display = 'block';
+                    document.body.style.overflow = 'hidden'; // Evita el scroll del body
+                }
+                
+                // Función para ocultar el modal
+                function hideModal() {
+                    document.getElementById('modal-verPerfil').style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Restaura el scroll del body
+                }
+                
+                // Función para cerrar el dropdown activo
+                function closeActiveDropdowns() {
+                    // Cerrar el dropdown al abrir el modal
+                    const activeDropdowns = document.querySelectorAll('.dropdown-menu.active');
+                    activeDropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                    
+                    const activeButtons = document.querySelectorAll('.expand-btn.active');
+                    activeButtons.forEach(button => {
+                        button.classList.remove('active');
+                    });
+                }
+                
+                // --- CONFIGURACIÓN DEL BOTÓN "VER PERFIL" ---
+                
+                // Seleccionar todos los menús desplegables
+                const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+                
+                dropdownMenus.forEach(menu => {
+                    // Seleccionar el primer elemento (Ver Perfil) en cada menú desplegable
+                    const verPerfilItem = menu.querySelector('.dropdown-item:nth-child(1)');
+                    
+                    if (verPerfilItem) {
+                        verPerfilItem.addEventListener('click', function(e) {
+                            e.stopPropagation(); // Evita que el click se propague
+                            showModal();
+                            closeActiveDropdowns();
+                        });
+                    }
+                });
+                
+                // --- CONFIGURACIÓN PARA CERRAR EL MODAL ---
+                
+                // Cerrar modal con botón de Cancelar
+                const cancelButton = document.querySelector('.cancel-button');
+                if (cancelButton) {
+                    cancelButton.addEventListener('click', hideModal);
+                }
+                
+                
+                // Cerrar modal al hacer clic en el overlay
+                const modalOverlay = document.querySelector('.modal-overlay');
+                if (modalOverlay) {
+                    modalOverlay.addEventListener('click', hideModal);
+                }
+                
+                // Evitar que al hacer clic en el contenido del modal, este se cierre
+                const modalContent = document.querySelector('.modal-content');
+                if (modalContent) {
+                    modalContent.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                    });
+                }
+            });
+
+                
+
+            
+
+            document.addEventListener('DOMContentLoaded', function() {
+            // Manejar clic en los botones de expansión
+            document.querySelectorAll('.expand-btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    
+                    // Cerrar otros dropdowns abiertos
+                    document.querySelectorAll('.expand-btn').forEach(btn => {
+                        if (btn !== this) {
+                            btn.classList.remove('active');
+                            const menu = btn.nextElementSibling;
+                            if (menu && menu.classList.contains('dropdown-menu')) {
+                                menu.classList.remove('active');
+                            }
+                            // Remover clase menu-active del contenedor
+                            const container = btn.closest('.dropdown-container');
+                            if (container) {
+                                container.classList.remove('menu-active');
+                            }
+                        }
+                    });
+                    
+                    // Toggle el dropdown actual
+                    this.classList.toggle('active');
+                    const dropdownMenu = this.nextElementSibling;
+                    if (dropdownMenu && dropdownMenu.classList.contains('dropdown-menu')) {
+                        dropdownMenu.classList.toggle('active');
+                        
+                        // Añadir o remover clase menu-active al contenedor
+                        const container = this.closest('.dropdown-container');
+                        if (container) {
+                            if (dropdownMenu.classList.contains('active')) {
+                                container.classList.add('menu-active');
+                            } else {
+                                container.classList.remove('menu-active');
+                            }
+                        }
+                    }
+                });
+            });
+            
+            // Cerrar dropdown al hacer clic fuera
+            document.addEventListener('click', function() {
+                document.querySelectorAll('.expand-btn.active').forEach(btn => {
+                    btn.classList.remove('active');
+                    const menu = btn.nextElementSibling;
+                    if (menu && menu.classList.contains('dropdown-menu')) {
+                        menu.classList.remove('active');
+                    }
+                    // Remover clase menu-active del contenedor
+                    const container = btn.closest('.dropdown-container');
+                    if (container) {
+                        container.classList.remove('menu-active');
+                    }
+                });
+            });
+            
+            // Manejar clic en las opciones del dropdown
+            document.querySelectorAll('.dropdown-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    
+                    // Marcar la opción seleccionada
+                    const parentMenu = this.closest('.dropdown-menu');
+                    parentMenu.querySelectorAll('.dropdown-item').forEach(menuItem => {
+                        menuItem.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Aquí puedes añadir la lógica para cada opción
+                    const action = this.querySelector('span').textContent;
+                    console.log(`Acción seleccionada: ${action}`);
+                    
+                    // Cerrar el dropdown después de seleccionar
+                    const expandButton = parentMenu.previousElementSibling;
+                    if (expandButton && expandButton.classList.contains('expand-btn')) {
+                        expandButton.classList.remove('active');
+                        parentMenu.classList.remove('active');
+                        
+                        // Remover clase menu-active del contenedor
+                        const container = expandButton.closest('.dropdown-container');
+                        if (container) {
+                            container.classList.remove('menu-active');
+                        }
+                    }
+                });
+            });
+        });
+
+        // Script para el menú de perfil
+        document.querySelector('.perfil-flecha').addEventListener('click', function() {
+            const perfilMenu = document.getElementById('perfilMenu');
+            perfilMenu.classList.toggle('show-menu');
+        });
+    
+        // Cerrar el menú al hacer clic fuera de él
+        document.addEventListener('click', function(event) {
+            const perfilMenu = document.getElementById('perfilMenu');
+            const perfilFlecha = document.querySelector('.perfil-flecha');
+            
+            // Si el clic no fue en el menú ni en el botón de la flecha, cerrar el menú
+            if (!perfilMenu.contains(event.target) && !perfilFlecha.contains(event.target)) {
+                perfilMenu.classList.remove('show-menu');
+            }
+        });
+    
+        // Script para los menús desplegables de navegación
+        document.querySelectorAll('.main-button').forEach(button => {
+            button.addEventListener('click', (event) => {
+                // Evitar que se cierre el sidebar si solo estamos desplegando submenu
+                event.stopPropagation();
+                
+                const parent = button.parentElement;
+                const wasActive = parent.classList.contains('active');
+                
+                // Cerrar todos los menús activos
+                document.querySelectorAll('.menu-item.active').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Si no estaba activo, activarlo
+                if (!wasActive) {
+                    parent.classList.add('active');
+                }
+            });
+        });
+
+        // Script para toggle del sidebar en móviles
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        const hamburger = document.getElementById('hamburger');
+        const overlay = document.getElementById('sidebarOverlay');
+        
+        sidebarToggle.addEventListener('click', function() {
+            sidebar.classList.toggle('open');
+            hamburger.classList.toggle('open');
+            overlay.classList.toggle('active');
+            
+            // Mover el botón también cuando el sidebar está abierto
+            sidebarToggle.classList.toggle('moved');
+        });
+        
+        // Cerrar sidebar al hacer clic en el overlay
+        overlay.addEventListener('click', function() {
+            sidebar.classList.remove('open');
+            hamburger.classList.remove('open');
+            overlay.classList.remove('active');
+            sidebarToggle.classList.remove('moved'); // Regresar el botón a su posición original
+        });
+        
+        // Cerrar sidebar SOLO cuando se hace clic en enlaces de navegación
+        document.querySelectorAll('.nav-link').forEach(item => {
+            item.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('open');
+                    hamburger.classList.remove('open');
+                    overlay.classList.remove('active');
+                    sidebarToggle.classList.remove('moved'); // Regresar el botón a su posición original
+                }
+            });
+        });
+        
+        // Ajustar al cambiar el tamaño de la ventana
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                sidebar.classList.remove('open');
+                hamburger.classList.remove('open');
+                overlay.classList.remove('active');
+                sidebarToggle.classList.remove('moved'); // Regresar el botón a su posición original
+            }
+        });
+    </script>
+</body>
+</html>
